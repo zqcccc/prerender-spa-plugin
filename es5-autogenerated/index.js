@@ -131,7 +131,7 @@ PrerenderSPAPlugin.prototype.apply = function (compiler) {
     // Create dirs and write prerendered files.
     .then(function (processedRoutes) {
       var promises = Promise.all(processedRoutes.map(function (processedRoute) {
-        return mkdirp(path.dirname(processedRoute.outputPath)).then(function () {
+        return mkdirp(path.dirname(processedRoute.outputPath), { recursive: true }).then(function () {
           return new Promise(function (resolve, reject) {
             compilerFS.writeFile(processedRoute.outputPath, processedRoute.html.trim(), function (err) {
               if (err) reject(`[prerender-spa-plugin] Unable to write rendered route to file "${processedRoute.outputPath}" \n ${err}.`);else resolve();
