@@ -1,5 +1,5 @@
 {
-  "name": "prerender-spa-plugin-wp5",
+  "name": "prerender-spa-wp5-plugin",
   "version": "3.5.1",
   "description": "Flexible, framework-agnostic static site generation for sites and SPAs built with webpack.",
   "license": "MIT",
