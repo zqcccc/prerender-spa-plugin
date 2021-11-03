@@ -1,3 +1,5 @@
+fork from https://github.com/chrisvfritz/prerender-spa-plugin that may be not maintained
+
 <h1 align="center">Prerender SPA Plugin</h1>
 <p align="center">
   <em>Flexible, framework-agnostic static site generation for sites and SPAs built with webpack.</em>
