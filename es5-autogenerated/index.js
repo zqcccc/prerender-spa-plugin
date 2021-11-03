@@ -65,11 +65,12 @@ PrerenderSPAPlugin.prototype.apply = function (compiler) {
   var _this2 = this;
 
   var compilerFS = compiler.outputFileSystem;
+  var mkdir = typeof compilerFS.mkdirp === 'function' ? compilerFS.mkdirp : compilerFS.mkdir;
 
   // From https://github.com/ahmadnassri/mkdirp-promise/blob/master/lib/index.js
   var mkdirp = function mkdirp(dir, opts) {
     return new Promise(function (resolve, reject) {
-      compilerFS.mkdirp(dir, opts, function (err, made) {
+      mkdir(dir, opts, function (err, made) {
         return err === null ? resolve(made) : reject(err);
       });
     });
@@ -153,6 +154,7 @@ PrerenderSPAPlugin.prototype.apply = function (compiler) {
       PrerendererInstance.destroy();
       var msg = '[prerender-spa-plugin] Unable to prerender all routes!';
       console.error(msg);
+      console.error('[prerender-spa-plugin] err: ', err);
       compilation.errors.push(new Error(msg));
       done();
     });
